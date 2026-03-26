@@ -375,7 +375,7 @@ def perform_ray_tracing(tx_position, rx_positions, buildings, tx_power_dBm=30):
 
 def main():
     # File path
-    file_path = r"C:\Users\Jingwen TONG\Desktop\我的文档\02_项目_202301\16-WirelessAgent-ChinaCom\Simulations\WirelessAgent_LangGraph\Knowledge_Base\HKUST_F.osm"
+    file_path = "Knowledge_Base/HKUST_F.osm"
     
     try:
         # Parse buildings from OSM

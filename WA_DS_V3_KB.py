@@ -32,9 +32,9 @@ from pydantic import BaseModel, Field
 
 # Set up LLM
 llm = ChatOpenAI(
-    api_key="sk-9f0aad159bf54827a991caf602cb084d",
-    base_url="https://api.deepseek.com",
-    model="deepseek-chat",
+    api_key=os.getenv("SILICONFLOW_API_KEY", "sk-osyqrrfpbixigaycavtduiwuxwtcezjysqeqtirtqkgacwgx"),
+    base_url="https://api.siliconflow.cn/v1",
+    model="Qwen/Qwen2.5-7B-Instruct",
     temperature=0
 )
 
@@ -52,7 +52,7 @@ def load_knowledge_base(file_path):
         return content
 
 # Knowledge base file path
-KNOWLEDGE_BASE_PATH = r"C:\Users\Jingwen TONG\Desktop\我的文档\02_项目_202301\16-WirelessAgent-ChinaCom\Simulations\WirelessAgent_LangGraph\Knowledge_Base\Intent_Understand.txt"
+KNOWLEDGE_BASE_PATH = os.path.join(os.path.dirname(__file__), "Knowledge_Base", "Intent_Understand.txt")
 
 # Preload knowledge base
 KNOWLEDGE_BASE_CONTENT = load_knowledge_base(KNOWLEDGE_BASE_PATH)
@@ -2116,7 +2116,7 @@ def main(num_users=4, export_file="fileName.csv"):
     print("Starting network slice management system with CSV-based user testing...\n")
     
     # Path to ray tracing results CSV
-    ray_tracing_csv = r"C:\Users\Jingwen TONG\Desktop\我的文档\02_项目_202301\16-WirelessAgent-ChinaCom\Simulations\WirelessAgent_LangGraph\Knowledge_Base\ray_tracing_results.csv"
+    ray_tracing_csv = os.path.join(os.path.dirname(__file__), "Knowledge_Base", "ray_tracing_results.csv")
     
     # Load users from CSV (limit to specified number)
     users = load_user_data_from_csv(ray_tracing_csv, num_users)
@@ -2297,5 +2297,5 @@ def main(num_users=4, export_file="fileName.csv"):
     export_results_to_csv(detailed_results, slice_stats, intent_stats, export_file)
 
 if __name__ == "__main__":
-    # Test with 10 users by default and export results to CSV
-    main(num_users=3, export_file="network_slicing_results_DSv3KB.csv") # The number of users can be adjusted as needed
+    # Test with 10 users (high load) and export results to CSV
+    main(num_users=10, export_file="network_slicing_results_DSv3KB.csv") # The number of users can be adjusted as needed

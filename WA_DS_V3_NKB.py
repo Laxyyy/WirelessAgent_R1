@@ -30,12 +30,13 @@ from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from langchain_core.tools import BaseTool, tool
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
+import os
 
-# Set up LLM
+# Set up LLM - use siliconflow API
 llm = ChatOpenAI(
-    api_key="sk-9f0aad159bf54827a991caf602cb084d",
-    base_url="https://api.deepseek.com",
-    model="deepseek-chat",
+    api_key=os.getenv("SILICONFLOW_API_KEY", "sk-osyqrrfpbixigaycavtduiwuxwtcezjysqeqtirtqkgacwgx"),
+    base_url="https://api.siliconflow.cn/v1",
+    model="Qwen/Qwen2.5-7B-Instruct",
     temperature=0
 )
 
@@ -1911,7 +1912,7 @@ def main(num_users=4, export_file="fileName.csv"):
     print("Starting network slice management system with CSV-based user testing...\n")
     
     # Path to ray tracing results CSV
-    ray_tracing_csv = r"C:\Users\Jingwen TONG\Desktop\我的文档\02_项目_202301\16-WirelessAgent-ChinaCom\Simulations\WirelessAgent_LangGraph\Knowledge_Base\ray_tracing_results.csv"
+    ray_tracing_csv = os.path.join(os.path.dirname(__file__), "Knowledge_Base", "ray_tracing_results.csv")
     
     # Load users from CSV (limit to specified number)
     users = load_user_data_from_csv(ray_tracing_csv, num_users)
@@ -2082,4 +2083,4 @@ def main(num_users=4, export_file="fileName.csv"):
 
 if __name__ == "__main__":
     # Test with 10 users by default and export results to CSV
-    main(num_users=3, export_file="network_slicing_results_DSv3NKB.csv") # The number of users can be adjusted as needed
+    main(num_users=10, export_file="network_slicing_results_DSv3NKB.csv") # The number of users can be adjusted as needed

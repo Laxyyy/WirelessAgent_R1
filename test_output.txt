@@ -1,0 +1,142 @@
+Starting network slice management system with CSV-based user testing...
+
+Testing 3 users from ray tracing results CSV
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+PROCESSING USER 1 (1/3)
+Request: "I want to use remote surgery equipment"
+CQI: 13
+Ground Truth Slice: URLLC
+--------------------------------------------------------------------------------------------------------------------------------------------
+Knowledge Base recommended slice: URLLC (Knowledge base match: ("i want to use remote surgery equipment", "urllc"),)
+
+----------------------------------------
+ALLOCATION RESULT FOR USER 1
+----------------------------------------
+Network Status @ 2026-03-23 23:42:52
+Total Users: 1
+Average Resource Utilization: 2.5%
+eMBB Total Rate: 0.00 Mbps, URLLC Total Rate: 39.64 Mbps
+
+Slice      Users  Resource Usage    Utilization
+-------  -------  ----------------  -------------
+eMBB           0  0/90 MHz          0%
+URLLC          1  3/30 MHz          10.00%
+
+New User Allocation:
+User 1 → URLLC Slice
+CQI: 13, Bandwidth: 3 MHz, Rate: 39.64 Mbps, Latency: 1.0 ms
+
+Current User Allocations:
++-----------+---------+-------+------------+---------------+----------------+----------+
+|   User ID | Slice   |   CQI |   BW (MHz) |   Rate (Mbps) |   Latency (ms) | Status   |
++===========+=========+=======+============+===============+================+==========+
+|         1 | URLLC   |    13 |          3 |         39.64 |              1 | NEW      |
++-----------+---------+-------+------------+---------------+----------------+----------+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+PROCESSING USER 2 (2/3)
+Request: "I need real-time traffic updates for navigation"
+CQI: 15
+Ground Truth Slice: URLLC
+--------------------------------------------------------------------------------------------------------------------------------------------
+Knowledge Base recommended slice: URLLC (Knowledge base match: ("i need real-time traffic updates for navigation", "urllc"),)
+
+----------------------------------------
+ALLOCATION RESULT FOR USER 2
+----------------------------------------
+Network Status @ 2026-03-23 23:43:34
+Total Users: 2
+Average Resource Utilization: 5.0%
+eMBB Total Rate: 0.00 Mbps, URLLC Total Rate: 85.05 Mbps
+
+Slice      Users  Resource Usage    Utilization
+-------  -------  ----------------  -------------
+eMBB           0  0/90 MHz          0%
+URLLC          2  6/30 MHz          20.00%
+
+New User Allocation:
+User 2 → URLLC Slice
+CQI: 15, Bandwidth: 3 MHz, Rate: 45.41 Mbps, Latency: 5.0 ms
+
+Current User Allocations:
++-----------+---------+-------+------------+---------------+----------------+----------+
+|   User ID | Slice   |   CQI |   BW (MHz) |   Rate (Mbps) |   Latency (ms) | Status   |
++===========+=========+=======+============+===============+================+==========+
+|         1 | URLLC   |    13 |          3 |         39.64 |              1 |          |
++-----------+---------+-------+------------+---------------+----------------+----------+
+|         2 | URLLC   |    15 |          3 |         45.41 |              5 | NEW      |
++-----------+---------+-------+------------+---------------+----------------+----------+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+PROCESSING USER 3 (3/3)
+Request: "I need to synchronize distributed financial ledgers instantly"
+CQI: 10
+Ground Truth Slice: URLLC
+--------------------------------------------------------------------------------------------------------------------------------------------
+Knowledge Base recommended slice: URLLC (Knowledge base match: ("i need to synchronize distributed financial ledgers instantly", "urllc"),)
+
+----------------------------------------
+ALLOCATION RESULT FOR USER 3
+----------------------------------------
+Network Status @ 2026-03-23 23:44:00
+Total Users: 3
+Average Resource Utilization: 8.33%
+eMBB Total Rate: 0.00 Mbps, URLLC Total Rate: 126.71 Mbps
+
+Slice      Users  Resource Usage    Utilization
+-------  -------  ----------------  -------------
+eMBB           0  0/90 MHz          0%
+URLLC          3  10/30 MHz         33.33%
+
+New User Allocation:
+User 3 → URLLC Slice
+CQI: 10, Bandwidth: 4 MHz, Rate: 41.66 Mbps, Latency: 5.0 ms
+
+Current User Allocations:
++-----------+---------+-------+------------+---------------+----------------+----------+
+|   User ID | Slice   |   CQI |   BW (MHz) |   Rate (Mbps) |   Latency (ms) | Status   |
++===========+=========+=======+============+===============+================+==========+
+|         1 | URLLC   |    13 |          3 |         39.64 |              1 |          |
++-----------+---------+-------+------------+---------------+----------------+----------+
+|         2 | URLLC   |    15 |          3 |         45.41 |              5 |          |
++-----------+---------+-------+------------+---------------+----------------+----------+
+|         3 | URLLC   |    10 |          4 |         41.66 |              5 | NEW      |
++-----------+---------+-------+------------+---------------+----------------+----------+
+
+============================================================
+SUMMARY OF USER ALLOCATIONS
+============================================================
++-----------+----------+---------+----------------+----------------+-------+------------+---------------+----------------+------------+
+|   User ID | Status   | Slice   | Ground Truth   | Intent Match   |   CQI |   BW (MHz) |   Rate (Mbps) |   Latency (ms) | Adjusted   |
++===========+==========+=========+================+================+=======+============+===============+================+============+
+|         1 | Success  | URLLC   | URLLC          | Yes            |    13 |          3 |         39.64 |              1 | No         |
++-----------+----------+---------+----------------+----------------+-------+------------+---------------+----------------+------------+
+|         2 | Success  | URLLC   | URLLC          | Yes            |    15 |          3 |         45.41 |              5 | No         |
++-----------+----------+---------+----------------+----------------+-------+------------+---------------+----------------+------------+
+|         3 | Success  | URLLC   | URLLC          | Yes            |    10 |          4 |         41.66 |              5 | No         |
++-----------+----------+---------+----------------+----------------+-------+------------+---------------+----------------+------------+
+
+Statistics:
+Success rate: 3/3 (100.0%)
+
+Intent Understanding Evaluation:
+Correctly identified intents: 3/3
+Intent understanding rate: 100.0%
+
+Workload Balancing Statistics:
+Users with workload balancing: 0/3
+Workload balancing rate: 0.0%
+
+Slice Utilization Statistics:
+Average eMBB utilization: 0.00%
+Average URLLC utilization: 21.11%
+
+Transmission Rate Statistics:
+Final eMBB total rate: 0.00 Mbps
+Final URLLC total rate: 126.71 Mbps
+
+Resource Utilization:
+Average resource utilization: 8.33%
+
+Results exported to network_slicing_results_DSv3KB.csv
